@@ -1,0 +1,21 @@
+<div class="container-fluid">
+	<h1 class="musings-title">{{ page.metafields.scb.studio_creat_head1 }} <span>— {{ page.metafields.scb.studio_creat_head2 }}</span></h1>
+</div>
+
+<div class="flexible-content">
+	<div class="container-fluid">
+		<div class="row align-items-end flex-column no-gutters pb-5">
+			<div class="col-xl-8">
+				<div class="featured-text">
+					{{ page.metafields.scb.studio_creative_services_text }}
+				</div>
+				{% for block in page.metafields.scb.studio_creative_services_rows %}
+				  {% assign data = block.value %}
+				  	<div class="w-100 text-row">
+					  	{{ data.studio_creative_services_rows_row_text }}
+				  	</div>
+				{% endfor %}
+		  	</div>
+		</div>
+	</div>
+</div>

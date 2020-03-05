@@ -40,3 +40,31 @@ body.single_studio_press {
 		}
 	}
 }
+
+body.single_studio_creative_services {
+	.featured-text {
+		font-family: $font-secondary;
+		font-size: rem(35px);
+		line-height: 1em;
+		@include media('>xl') {
+			padding-top: rem(250px);
+		}
+	}
+	.text-row {
+		border-top: 1px solid #707070;
+		margin-top: rem(50px);
+		padding-top: rem(50px);
+		font-size: rem(17px);
+		color: #f1eedb;
+		letter-spacing: 0.31px;
+		h2 {
+			font-family: $font-secondary;
+			font-size: rem(23px);
+			margin-bottom: 1em;
+			span {
+				font-weight: 100;
+				font-family: $font-primary;
+			}
+		}
+	}
+}

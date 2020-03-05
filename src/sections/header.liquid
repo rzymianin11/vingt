@@ -74,7 +74,35 @@
     <!-- Module - Navigation -->
     <nav class="module module-navigation right">
       <ul class="nav nav-primary rightmega">
-        <li><a href="#">Studio</a></li>
+	  	{% for link in linklists[section.settings.menu_right].links %}  
+		    {% if link.links != blank %}
+	        <li class="has-children">
+	          <a href="#">{{ link.title }}</a>
+	          <div class="megamenu">
+		          <div class="row">
+				  {% for childlink in link.links %}
+		          	<div class="col-md-4">
+			          	{% if childlink.links != blank %}
+			          	<h6><a href="{{ childlink.url }}">{{ childlink.title }}</a></h6>
+			          		<ul>
+				          	{% for childlink2 in childlink.links %}
+				          		<li><a href="{{ childlink2.url }}">{{ childlink2.title }}</a></li>
+				          	{% endfor %}
+			          		</ul>
+			          	{% endif %}
+		          	</div>
+				  	{% endfor %}
+		          </div>
+	           </div>
+	        </li>
+	        {% else %}
+	          <li>
+	            <a href="{{ link.url }}">
+	              {{ link.title }}
+	            </a>
+	          </li>
+	        {% endif %}
+	  	{% endfor %}
         <li><a href="#">Search</a></li>
         {% if shop.customer_accounts_enabled %}
         <li>
@@ -276,6 +304,11 @@
         "id": "menu",
         "label": "Menu",
         "default": "main-menu"
+      },
+      {
+        "type": "link_list",
+        "id": "menu_right",
+        "label": "Menu Right"
       }
     ]
   }
