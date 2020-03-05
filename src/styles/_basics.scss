@@ -1,0 +1,19 @@
+/* ---------------------------------------------------------------------------- */
+/* --- BASICS
+/* ----------------------------------------------------------------------------- */
+
+.relative { position: relative; z-index: 2; }
+.dark { color: #fff; }
+
+.fullheight { height: 100vh; }
+
+// @include media(">lg") {
+//     .row.gutters-lg {
+//         margin-left: -60px;
+//         margin-right: -60px;
+//     }
+//     .row.gutters-lg > *[class^='col'], .row.gutters-lg > *[class*=' col'] {
+//         padding-left: 60px;
+//         padding-right: 60px;
+//     }
+// }

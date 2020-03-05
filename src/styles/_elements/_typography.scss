@@ -1,0 +1,285 @@
+/* Typography
+----------------------------------------------------------*/
+
+/* Headings */
+
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
+  margin-top: 0;
+  margin-bottom: 2rem;
+  line-height: 1.1;
+  @include font-secondary-regular;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+
+  &.append-dash {
+    &:after {
+      position: relative;
+      top: -0.1em;
+      height: 2px;
+      background-color: $color-global;
+      content: ' ';
+      width: 0.9em;
+      display: inline-block;
+      vertical-align: middle;
+      margin-left: 0.25em;
+
+      @include media('<=md') {
+        height: 1px;
+      }
+    }
+  }
+
+  strong {
+    position: relative;
+    @include font-primary-light;
+
+    &:after {
+      position: relative;
+      top: -0.1em;
+      height: 2px;
+      background-color: $color-global;
+      content: ' ';
+      width: 0.9em;
+      display: inline-block;
+      vertical-align: middle;
+      margin: 0 0.2em;
+
+      @include media('<=md') {
+        height: 1px;
+      }
+    }
+  }
+}
+
+
+h1, .h1 {
+  font-size: rem(105px);
+
+  @include media('<=xxl') {
+    font-size: rem(80px);
+  }
+
+  @include media('<=xl') {
+    font-size: rem(70px);
+  }
+
+  @include media('<=md') {
+    font-size: rem(50px);
+  }
+
+  @include media('<=sm') {
+    font-size: rem(26px);
+  }
+}
+
+h2, .h2 {
+  font-size: rem(58px);
+
+  @include media('<=xl') {
+    font-size: rem(40px);
+  }
+
+  @include media('<=sm') {
+    font-size: rem(27px);
+  }
+}
+
+h3, .h3 {
+}
+
+h4, .h4 {
+  font-size: rem(33px);
+
+  @include media('<=xl') {
+    font-size: rem(21px);
+  }
+
+  @include media('<=sm') {
+    font-size: rem(12px);
+  }
+
+  strong {
+
+    &:after {
+      height: 1px;
+    }
+  }
+}
+
+h5, .h5 {
+  font-size: 1.1rem;
+}
+
+h6, .h6 {
+  @include font-primary-regular;
+  text-transform: uppercase;
+  font-size: rem(16px);
+
+  @include media('<=xl') {
+    font-size: rem(16px);
+  }
+
+  @include media('<=sm') {
+    font-size: rem(10px);
+  }
+
+  a {
+    @include link-underline-hover;
+  }
+}
+
+/* Display */
+.display-1 {
+  font-size: rem(118px);
+
+  @include media('<=xxl') {
+    font-size: rem(90px);
+  }
+
+  @include media('<=xl') {
+    font-size: rem(60px);
+  }
+
+  @include media('<=sm') {
+    font-size: rem(42px);
+  }
+}
+
+/* Blockqutoe */
+.blockquote-big {
+  padding: $layout-spacing 0;
+
+  @include media('<=xl') {
+    padding: $layout-spacing-md 0;
+  }
+
+  @include media('<=md') {
+    padding: $layout-spacing-sm 0;
+  }
+
+  p {
+    position: relative;
+    font-size: rem(72px);
+    @include font-secondary-regular;
+
+    @include media('<=xxl') {
+      font-size: rem(60px);
+    }
+
+    @include media('<=xl') {
+      font-size: rem(50px);
+    }
+
+    @include media('<=md') {
+      font-size: rem(36px);
+    }
+
+    @include media('<=sm') {
+      font-size: rem(24px);
+    }
+
+    &:before {
+      position: absolute;
+      font-size: rem(100px);
+      top: -0.35em;
+      left: -0.4em;
+      content: '“';
+    }
+  }
+  footer {
+    font-size: rem(26px);
+    text-transform: uppercase;
+
+    @include media('<=xl') {
+      font-size: rem(20px);
+    }
+
+    @include media('<=sm') {
+      font-size: rem(15px);
+    }
+
+    &:before {
+      position: relative;
+      top: -0.1em;
+      height: 2px;
+      background-color: $color-global;
+      content: ' ';
+      width: 3em;
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 0.75em;
+    }
+  }
+}
+
+/* Paragraph */
+
+p {
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.35;
+
+  @include media('<=md') {
+    font-size: rem(13px);
+  }
+
+  @include media('<=sm') {
+    font-size: rem(11px);
+  }
+}
+
+/* Colors */
+
+@each $type, $color in $types {
+  .text-#{$type} {
+    color: $color;
+  }
+}
+
+/* Link */
+.link-underline {
+  position: relative;
+  font-size: rem(16px);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: inherit;
+
+  @include media('<=sm') {
+    font-size: rem(11px);
+  }
+
+  &.bottom-right {
+    position: absolute;
+    right: 0;
+    top: calc(100% + 1rem);
+  }
+
+  &:after {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    height: 1px;
+    background-color: $color-global;
+    content: ' ';
+    @include transition-primary;
+    will-change: opacity;
+  }
+
+  &:hover, &:focus {
+    color: inherit;
+
+    &:after {
+      opacity: 0;
+    }
+  }
+}
+
+.link-underline-hover {
+  @include link-underline-hover;
+}
+
+/* Other */
+.text-capitalize {
+  text-transform: capitalize;
+}

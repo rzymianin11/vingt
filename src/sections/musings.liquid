@@ -1,0 +1,82 @@
+  <!-- Section - Musings -->
+  <section class="section">
+
+    <!-- Section Content -->
+    <div class="section-content container-fluid">
+      <h2 class="append-dash mb-1">MUSINGS</h2>
+      <h6>A COMPILATION OF VISUALS THAT INSPIRE THE MIND AND OUR WORK</h6>
+      <div class="row">
+	    {% for block in section.blocks %}  
+        <div class="col-md-4">
+          <!-- Card -->
+          <div class="card" data-animation="fadeInUp" data-animation-delay="0">
+            <div class="card-image">
+              <img src="{{ block.settings.image | img_url: '730x' }}" srcset="{{ block.settings.image | img_url: '730x', scale: 2 }} 2x, i{{ block.settings.image | img_url: '730x', scale: 3 }} 3x" alt="">
+            </div>
+            <div class="card-content">
+              <h6><a href="{{ block.settings.link }}">{{ block.settings.title }}</a></h6>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      <div class="section-more">
+        <a href="{{ section.settings.link }}" class="link-underline">EXPLORE DIALOGUES</a>
+      </div>
+    </div>
+
+  </section>
+
+
+
+{% schema %}
+  {
+    "name": "Musings",
+    "blocks": [
+      {
+        "type": "quote",
+        "name": "Musings",
+        "settings": [
+          {
+            "label": "Image",
+            "id": "image",
+            "type": "image_picker"
+          },
+          {
+            "label": "Title",
+            "id": "title",
+            "type": "text"
+          },
+			{
+			  "id": "link",
+			  "type": "url",
+			  "label": "Choose link"
+			}
+        ]
+      }
+    ],
+    "settings": [
+      {
+        "type": "text",
+        "id": "headline",
+        "label": "Headline"
+      },
+      {
+        "type": "text",
+        "id": "underheadline",
+        "label": "Text under headline"
+      },
+	{
+	  "id": "link",
+	  "type": "url",
+	  "label": "Choose link"
+	}
+    ],
+    "presets": [
+      {
+        "name": "Musings",
+        "category": "Text"
+      }
+    ]
+  }
+{% endschema %}

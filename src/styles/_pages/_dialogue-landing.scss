@@ -1,0 +1,55 @@
+body#dialogues {
+	#content {
+		min-height: calc(100vh - 106px);
+	}
+	.page-title {
+		position: absolute;
+		top: 180px;
+		left: calc(100% - 100px);
+		white-space: nowrap;
+		transform: rotate(90deg);
+		transform-origin: left top;
+		h1 {
+			font-size: rem(60px);
+		}
+	}
+	.image_big {
+		position: absolute;
+		left: 0;
+		width: 50vw;
+		top: 150px;
+		bottom: 0;
+		background-size: cover;
+		background-position: center center;
+	}
+	.names_wrapper {
+		position: absolute;
+		top: 50vh;
+		.names_container {
+			height: calc(50vh - 106px);
+			overflow: hidden;
+			font-size: rem(60px);
+			text-transform: uppercase;
+			font-family: $font-secondary;
+			.name {
+				overflow: hidden;
+				text-align: right;
+				a {
+					display: inline-block;
+					transition-timing-function: ease-in;
+					transition-duration: 0.5s;
+				}
+				&.hide {
+					a {
+						transform: translateY(100%);
+					}
+				}
+				&.show {
+					a {
+						transform: translateY(0);
+					}
+				}
+			}
+		}
+	}
+}

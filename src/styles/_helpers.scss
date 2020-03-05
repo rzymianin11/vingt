@@ -1,0 +1,64 @@
+/* ---------------------------------------------------------------------------- */
+/* --- HELPERS
+/* ----------------------------------------------------------------------------- */
+
+/* Typography
+----------------------------------------------------------*/
+
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+@each $breakpoint, $size in $breakpoints {
+  @include media('>#{$breakpoint}') {
+    .text-#{$breakpoint}-center { text-align: center; }
+    .text-#{$breakpoint}-left { text-align: center; }
+    .text-#{$breakpoint}-right { text-align: center; }
+  }
+}
+
+/* Spacing
+----------------------------------------------------------*/
+
+$spacingTypes: (
+  mt: 'margin-top',
+  mr: 'margin-right',
+  mb: 'margin-bottom',
+  ml: 'margin-left',
+  pt: 'padding-top',
+  pr: 'padding-right',
+  pb: 'padding-bottom',
+  pl: 'padding-left'
+);
+
+@each $shortcut, $style in $spacingTypes {
+  @for $i from 0 through 5 {
+    .#{$shortcut}-#{$i} {
+      #{$style}: #{0.5*$i}rem;
+    }
+    .#{$shortcut}-auto {
+      #{$style}: auto;
+    }
+    .#{$shortcut}-layout {
+      #{$style}: $layout-spacing;
+    }
+  }
+}
+
+@each $breakpoint, $size in $breakpoints {
+  @include media('>#{$breakpoint}') {
+    @each $shortcut, $style in $spacingTypes {
+      @for $i from 1 through 5 {
+        .#{$shortcut}-#{$breakpoint}-#{$i} {
+          #{$style}: #{0.5*$i}rem;
+        }
+        .#{$shortcut}-#{$breakpoint}-auto {
+          #{$style}: auto;
+        }
+        .#{$shortcut}-layout {
+          #{$style}: $layout-spacing;
+        }
+      }
+    }
+  }
+}

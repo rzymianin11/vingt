@@ -1,0 +1,57 @@
+/* Double One
+----------------------------------------------------------*/
+
+.section-double-one {
+  .section-container {
+    position: relative;
+    @include media('>md') {
+      display: flex;
+    }
+    @include media('<=md') {
+      display: flex;
+      min-height: calc(#{$fullheight-mobile} - 3rem);
+    }
+  }
+
+  .section-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    margin-right: $layout-spacing;
+
+    @include media('<=md') {
+
+    }
+
+    .section-content-top {
+      max-width: 340px;
+
+      @include media('<=sm') {
+        max-width: 210px;
+      }
+    }
+
+    .section-content-main {
+      margin-top: auto;
+      margin-bottom: auto;
+    }
+  }
+
+  .section-image {
+    margin-left: auto;
+
+    @include media('<=md') {
+      position: absolute;
+      top: 4rem;
+      right: $layout-spacing-sm;
+      width: 70%;
+      opacity: 0.9;
+      text-align: right;
+
+      img {
+        max-height: calc(#{$fullheight-mobile} - 3rem);
+      }
+    }
+  }
+}

@@ -1,0 +1,44 @@
+  <section class="section">
+
+    <!-- Section Content -->
+    <div class="section-content container-fluid">
+      <blockquote class="blockquote-big">
+        <p data-animation="fadeInUp">When we decide to look at an object from a different lens, the whole perspective changes.</p>
+        <footer data-animation="fadeInUp" data-animation-delay="200">SARAH ABDALLAH</footer>
+      </blockquote>
+      <div class="section-more">
+        <a href="#" class="link-underline">EXPLORE DIALOGUES</a>
+      </div>
+    </div>
+
+  </section>
+
+
+{% schema %}
+  {
+    "name": "Quote",
+    "settings": [
+      {
+        "type": "richtext",
+        "id": "quote",
+        "label": "Quote text"
+      },
+      {
+        "type": "text",
+        "id": "signature",
+        "label": "Signature"
+      },
+	{
+	  "id": "link",
+	  "type": "url",
+	  "label": "Choose link"
+	}
+    ],
+    "presets": [
+      {
+        "name": "Quote",
+        "category": "Text"
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,32 @@
+@font-face {
+    font-family: 'Gascogne-Xlight';
+    src: url('./fonts/Gascogne-Xlight.woff2') format('woff2'),
+        url('./fonts/Gascogne-Xlight.woff') format('woff');
+    font-weight: 100;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Apercu';
+    src: url('./fonts/Apercu-Bold.woff2') format('woff2'),
+        url('./fonts/Apercu-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Apercu';
+    src: url('./fonts/Apercu-Regular.woff2') format('woff2'),
+        url('./fonts/Apercu-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Apercu';
+    src: url('./fonts/Apercu-Light.woff2') format('woff2'),
+        url('./fonts/Apercu-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+}
+

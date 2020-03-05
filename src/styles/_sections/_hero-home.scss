@@ -1,0 +1,118 @@
+/* Home Hero
+----------------------------------------------------------*/
+
+.section-hero-home {
+  padding: 0;
+  @include media('<=lg','>md') {
+    height: $fullheight-mobile;
+  }
+  @include media('>md') {
+    display: flex;
+
+    @include media('>lg') {
+      height: $fullheight;
+    }
+    @include media('<=lg') {
+      height: $fullheight-mobile;
+    }
+  }
+
+  .section-module {
+    position: relative;
+
+    @include media('>md') {
+      flex: 0 0 50%;
+
+      .section-content-mobile {
+        display: none;
+      }
+    }
+    @include media('<=md') {
+      height: $fullheight-mobile;
+
+      .section-content {
+        display: none;
+      }
+    }
+
+    .section-content {
+      position: absolute;
+      bottom: 25%;
+
+      * {
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+
+    &.section-module-left {
+      .section-image {
+        @include fill-parent;
+      }
+
+      .section-content-mobile {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        padding: $layout-spacing-sm $layout-spacing-sm * 0.5;
+      }
+
+      .section-content {
+        right: 0;
+        padding-right: 1rem;
+        text-align: right;
+
+        h1 {
+          strong {
+            &:after {
+              position: absolute;
+              top: 50%;
+              height: 2px;
+              background-color: $color-global;
+              content: ' ';
+              left: calc(100% + 1rem);
+              width: calc(#{$layout-spacing} - 2rem);
+
+              @include media('<=xl') {
+                width: calc(#{$layout-spacing-md} - 2rem);
+              }
+
+              @include media('<=md') {
+                width: calc(#{$layout-spacing-sm} - 2rem);
+              }
+            }
+          }
+        }
+      }
+    }
+
+    &.section-module-right {
+      .section-image {
+        @include media('>xl') {
+          @include fill-parent($layout-spacing);
+        }
+        @include media('<=xl','>md') {
+          @include fill-parent($layout-spacing-md);
+        }
+        @include media('<=md') {
+          @include fill-parent($layout-spacing-sm);
+        }
+      }
+
+      .section-content {
+        left: $layout-spacing;
+        padding-left: 1rem;
+
+        @include media('<=xl') {
+          left: $layout-spacing-md;
+        }
+
+        @include media('<=md') {
+          left: $layout-spacing-sm;
+        }
+      }
+    }
+  }
+}

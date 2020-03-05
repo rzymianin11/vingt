@@ -1,0 +1,145 @@
+/* Navs
+----------------------------------------------------------*/
+
+.nav {
+  @include reset(list);
+  display: flex;
+}
+
+/* Nav Primary */
+
+.nav-primary {
+  li {
+    @include text-uppercase;
+
+    &:not(:last-child) {
+      margin-right: 1.5rem;
+    }
+
+    a {
+      position: relative;
+      color: inherit;
+      position: relative;
+      display: block;
+      z-index: 2;
+
+      &:after {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        height: 1px;
+        background-color: $color-dark;
+        content: ' ';
+        opacity: 0;
+        @include transition-primary;
+        will-change: opacity;
+      }
+
+      &:hover, &:focus {
+        color: inherit;
+
+        &:after {
+          opacity: 1;
+        }
+      }
+    }
+
+    ul {
+      @include reset(list);
+      padding: 0;
+
+      li {
+        display: block;
+
+        &:not(:last-child) {
+          margin-bottom: 1rem;
+        }
+
+        a {
+          display: inline-block;
+        }
+      }
+    }
+
+    .megamenu {
+      position: absolute;
+      left: 0;
+      top: 0;
+      background-color: #fff;
+      background-color: rgba($color-light-2, 0.9);
+      min-width: 540px;
+      padding: calc(#{$header-main-height} + #{$body-spacing * 1.25}) $body-spacing #{$body-spacing * 1.25};
+      min-height: calc(#{$header-main-height} + 350px);
+      opacity: 0;
+      visibility: hidden;
+      @include transition-secondary;
+      will-change: opacity, visibility;
+    }
+
+    &:hover, &:focus {
+      .megamenu {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+  }
+	&.rightmega {
+		li {
+		    .megamenu {
+			    left: auto;
+			    right: 0;
+		    }
+	    }
+	}  
+}
+
+/* Nav Footer */
+
+.nav-footer {
+  @include media('<=sm') {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  li {
+    @include text-uppercase;
+
+    &:not(:last-child) {
+      @include media('>sm') {
+        margin-right: 1rem;
+      }
+      @include media('<=sm') {
+        margin-bottom: 0.5rem;
+      }
+    }
+
+    a {
+      color: inherit;
+      position: relative;
+      display: block;
+
+      &:after {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        height: 1px;
+        background-color: $color-global;
+        content: ' ';
+        opacity: 0;
+        @include transition-primary;
+        will-change: opacity;
+      }
+
+      &:hover, &:focus {
+        color: inherit;
+
+        &:after {
+          opacity: 1;
+        }
+      }
+    }
+  }
+}

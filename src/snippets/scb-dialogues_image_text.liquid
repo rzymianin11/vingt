@@ -1,0 +1,19 @@
+<div class="{{ section_name }} index{{ forloop.index }} {% if data.dialogue_image_text_margin == 'yes' %}container-fluid{% endif %}  py-5">
+	<div class="row {% if data.dialogue_image_text_pos == 'right' %}flex-row-reverse{% endif %} my-5">
+		<div class="col-md-6 pl-0">
+			<img style="display: block;" src="{% include 'img_url' with url: data.dialogue_image_text_img[0].url, params: '960x' %}" class="w-100" />
+		</div>
+		<div class="col-md-6 txt 
+			{% if data.dialogue_image_text_pos == 'right %}
+				{% if data.dialogue_image_text_margin == 'no' %}
+					padding-left
+				{% endif %}
+			{% else %}
+				{% if data.dialogue_image_text_margin == 'no' %}
+					padding-right
+				{% endif %}
+			{% endif %}">
+			{{ data.dialogue_image_text_txt }}
+		</div>
+	</div>
+</div>

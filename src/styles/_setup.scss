@@ -1,0 +1,57 @@
+/* ----------------------------------------------------------------------------- */
+/* --- SETUP
+/* ----------------------------------------------------------------------------- */
+
+html {
+  font-size: $base;
+}
+
+body {
+  position: relative;
+  color: $color-global;
+  font-family: $font-primary;
+  font-weight: $font-primary-regular;
+  line-height: 1.5;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: $color-dark;
+}
+
+button, input {
+    font-family: inherit;
+}
+
+a {
+  color: inherit;
+  @include transition-primary;
+  text-decoration: none;
+
+  &:hover, &:focus {
+    color: $color-primary;
+    text-decoration: none;
+  }
+}
+
+b, strong {
+  font-weight: bold;
+}
+
+textarea:focus, input:focus, a:focus, a:visited, *:focus { outline: none; }
+
+iframe { border: none; }
+
+img { max-width: 100%; height: auto; -webkit-backface-visibility: hidden;}
+
+* {
+  box-sizing: border-box;
+}
+
+// .row:not(.no-gutters) {
+//     margin-left: -10px;
+//     margin-right: -10px;
+// }
+// .row:not(.no-gutters) > *[class^='col'], .row:not(.no-gutters) > *[class*=' col'] {
+//     padding-left: 10px;
+//     padding-right: 10px;
+// }

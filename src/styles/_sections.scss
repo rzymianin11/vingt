@@ -1,0 +1,28 @@
+/* ---------------------------------------------------------------------------- */
+/* --- SECTIONS
+/* ----------------------------------------------------------------------------- */
+
+.section {
+	position: relative;
+  @include media('>xl') {
+	  padding: $layout-spacing 0;
+  }
+  @include media('<=xl') {
+    padding: $layout-spacing-md 0;
+  }
+  @include media('<=md') {
+   padding: $layout-spacing-sm 0;
+  }
+
+  .section-content, .section-image, .section-module {
+    position: relative;
+  }
+
+  .section-more {
+    text-align: right;
+  }
+}
+
+@import "_sections/hero-home";
+@import "_sections/double-one";
+

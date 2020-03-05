@@ -1,0 +1,53 @@
+.template-collection {
+	#content {
+		padding-bottom: rem(100px);
+		header[role="banner"]{
+			padding-top: rem(62px);
+			h1 {
+				font-size: rem(45px);
+				font-family: $font-secondary;
+				font-weight: 100;
+				span {
+					font-family: $font-primary;
+				}
+			}
+		}
+		.product-li {
+			position: relative;
+			img {
+				width: 100%;
+			}
+			a.product-name {
+				text-transform: uppercase;
+				letter-spacing: 1.12px;
+				line-height: rem(21px);
+				font-size: rem(14px);
+				margin-top: rem(10px);
+				display: block;
+			}
+			.pprice {
+				text-transform: uppercase;
+				letter-spacing: 1.12px;
+				line-height: rem(21px);
+				font-size: rem(14px);
+			}
+			.onhover {
+				opacity: 0;
+				position: absolute;
+				left: 25px;
+				top: 0;
+				right: 25px;
+				bottom: 0;
+				text-align: center;
+			    -webkit-transition: opacity 0.3s ease-in;
+			       -moz-transition: opacity 0.3s ease-in;
+			         -o-transition: opacity 0.3s ease-in;
+			}
+			&:hover {
+				.onhover {
+					opacity: 1;
+				}
+			}
+		}
+	}
+}

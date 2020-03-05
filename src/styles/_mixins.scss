@@ -1,0 +1,154 @@
+@mixin font-primary-light {
+  font-family: $font-primary;
+  font-weight: $font-primary-light;
+}
+
+@mixin font-primary-regular {
+  font-family: $font-primary;
+  font-weight: $font-primary-regular;
+}
+
+@mixin font-primary-bold {
+  font-family: $font-primary;
+  font-weight: $font-primary-bold;
+}
+
+@mixin font-secondary-regular {
+  font-family: $font-secondary;
+  font-weight: $font-secondary-regular;
+}
+
+@mixin transition-primary() {
+	transition: all 0.2s $easeOutCubic;
+}
+
+@mixin transition-secondary() {
+  transition: all 0.6s $easeOutCirc;
+}
+
+@mixin transition-tertiary() {
+	transition: all 0.6s $easeOutBack;
+}
+
+@mixin reset($type: null) {
+  @if $type == spacing { margin: 0; padding: 0; }
+  @if $type == list { margin: 0; padding: 0; list-style: none;
+    & li { margin: 0; padding: 0; }
+  }
+  @if $type == button { background-color: transparent; border: none; outline: none; cursor: pointer; padding: 0; }
+  @if $type == everything { float: none; position: static; height: auto; width: auto; margin: 0; padding: 0; background-color: transparent; border: none; list-style: none; }
+}
+
+@mixin fill-parent($space: 0) {
+    position: absolute;
+    top: $space;
+    left: $space;
+    bottom: $space;
+    right: $space;
+    content: ' ';
+}
+
+@mixin link-inherit {
+    a:not(.btn) {
+        color: inherit;
+        &:hover, &:focus {
+            color: $color-primary;
+        }
+    }
+}
+
+@mixin text-uppercase {
+  font-size: rem(14px);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+
+  @include media('<=sm') {
+    font-size: rem(10px);
+  }
+}
+
+@mixin link-underline-hover {
+  position: relative;
+
+  &:after {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    height: 1px;
+    background-color: $color-global;
+    content: ' ';
+    opacity: 0;
+    @include transition-primary;
+    will-change: opacity;
+  }
+
+  &:hover, &:focus {
+    color: inherit;
+    &:after {
+      opacity: 1;
+    }
+  }
+}
+
+@mixin optional-at-root($sel) {
+  @at-root #{if(not &, $sel, selector-append(&, $sel))} {
+    @content;
+  }
+}
+
+@mixin placeholder {
+  @include optional-at-root('::-webkit-input-placeholder') {
+    @content;
+  }
+
+  @include optional-at-root(':-moz-placeholder') {
+    @content;
+  }
+
+  @include optional-at-root('::-moz-placeholder') {
+    @content;
+  }
+
+  @include optional-at-root(':-ms-input-placeholder') {
+    @content;
+  }
+}
+
+@mixin prefix($property, $value, $prefixes) {
+  @each $prefix in $prefixes {
+    @if $prefix == webkit {
+      -webkit-#{$property}: $value;
+    } @else if $prefix == moz {
+      -moz-#{$property}: $value;
+    } @else if $prefix == ms {
+      -ms-#{$property}: $value;
+    } @else if $prefix == o {
+      -o-#{$property}: $value;
+    } @else if $prefix == spec {
+      #{$property}: $value;
+    } @else  {
+      @warn "Unrecognized prefix: #{$prefix}";
+    }
+  }
+}
+
+@mixin animation($animation) {
+  @include prefix(animation, $animation, webkit moz);
+}
+
+@mixin transform($transform) {
+  @include prefix(transform, $transform, ms webkit spec);
+}
+
+@function strip-units($value) {
+  @return ($value / ($value * 0 + 1));
+}
+
+@mixin backface($visibility: hidden) {
+  @include prefix(backface-visiblity, $visibility, webkit spec);
+}
+
+@mixin user-select($value: none) {
+  @include prefix('user-select', #{$value}, moz ms webkit spec);
+}

@@ -1,0 +1,24 @@
+<div class="container-fluid py-5 scb2">
+	<div class="row no-gutters  my-5">
+		<div class="col-12 {% if data.inner_padding4 != blank %}lesspaddingmobile{% endif %}" style="
+			{% if data.inner_padding4 != blank %} 
+				padding: {{ data.inner_padding4 }};
+			{% endif %}
+			{% if data.bg-color4 != blank %} 
+				background-color: {{ data.bg-color4 }};
+			{% endif %}
+				">
+			<div class="w-100" style="position: relative;">
+				<img style="display: block;" src="{% include 'img_url' with url: data.3[0].url, params: '1920x' %}" class="w-100" />
+				{% if data.3[0].title != '' %} 
+					<div class="label" style="position: absolute; bottom: -2.5em; right: 0; color: {{ data.images_w_c_color }}; font-size: 15px; letter-spacing: 0.16px; font-weight: 100;">
+						{{ data.3[0].title }}
+					</div>
+				{% endif %}
+				{% if data.images_w_c_title_top != blank %}
+					<h2>{{ data.images_w_c_title_top }} <span>—</span></h2>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+</div>

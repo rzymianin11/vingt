@@ -1,0 +1,19 @@
+/* ---------------------------------------------------------------------------- */
+/* --- CONTENT
+/* ----------------------------------------------------------------------------- */
+
+#content {
+	position: relative;
+
+  @include media('>lg') {
+    padding-top: $header-main-height;
+    .template-collection &, .template-product & {
+	    padding-top: 150px;
+    }
+  }
+
+  @include media('<=lg') {
+    padding-top: $header-main-height-mobile;
+  }
+}
+

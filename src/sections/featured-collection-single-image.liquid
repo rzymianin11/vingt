@@ -1,0 +1,66 @@
+  <!-- Section - Double #1 -->
+  <section class="section section-double-one">
+
+    <!-- Section Container -->
+    <div class="section-container container-fluid">
+
+      <!-- Section Content -->
+      <div class="section-content">
+        <div class="section-content-top">
+          <p>An articulate expression of the modern woman and her intimate exploration of a dreamy cityscape.</p>
+        </div>
+        <div class="section-content-main">
+          <h2 class="display-1 mb-0">SELF REFLECTION</h2>
+          <h4><strong>A VISUAL NARRATIVE </strong> SERIES 02</h4>
+        </div>
+      </div>
+
+      <!-- Section Image -->
+      <div class="section-image">
+        <img src="{{ section.settings.image-1 | img_url: '1460x' }}" srcset="{{ section.settings.image-1 | img_url: '730x', scale: 2 }} 2x, {{ section.settings.image-1 | img_url: '730x', scale: 3 }} 3x" data-animation="fadeInUp" alt="">
+        <a href="#" class="link-underline bottom-right" data-animation="fadeIn" data-animation-delay="400">SHOP COLLECTION</a>
+      </div>
+
+    </div>
+
+  </section>
+
+
+{% schema %}
+  {
+    "name": "Collection single image",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "image-1",
+        "label": "Image on the right"
+      },
+      {
+        "type": "text",
+        "id": "p1",
+        "label": "Paragraph on the top"
+      },
+      {
+        "type": "text",
+        "id": "h1",
+        "label": "Headline"
+      },
+      {
+        "type": "text",
+        "id": "h2",
+        "label": "Under headline"
+      },
+		{
+		  "id": "link",
+		  "type": "url",
+		  "label": "Choose link"
+		}
+    ],
+    "presets": [
+      {
+        "name": "Collection single image",
+        "category": "Collection"
+      }
+    ]
+  }
+{% endschema %}

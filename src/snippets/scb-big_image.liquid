@@ -1,0 +1,11 @@
+<div class="scb-big_image">
+	<div class="row">
+		<div class="col-12 pr-0 img">
+			<h2>{{ data.big_image_title }}</h2>
+			<img style="display: block;" src="{% include 'img_url' with url: data.big_image_img[0].url, params: '1920x' %}" class="w-100" />
+				<div class="label" style="position: absolute; top: calc(100% + 2.5em); right: 50px; color: white; font-size: 15px; letter-spacing: 0.16px; font-weight: 100;">
+					{{ data.big_image_img[0].title }}
+				</div>
+		</div>
+	</div>
+</div>

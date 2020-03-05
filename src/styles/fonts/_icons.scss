@@ -1,0 +1,57 @@
+
+
+@font-face {
+  font-family:"Icons";
+  src:url("./fonts/icons-aefddce5b0970b462a0a21b8c31b7c89.eot?aefddce5b0970b462a0a21b8c31b7c89");
+  src:url("./fonts/icons-aefddce5b0970b462a0a21b8c31b7c89.eot?aefddce5b0970b462a0a21b8c31b7c89#iefix") format("embedded-opentype"),
+		url("./fonts/icons-aefddce5b0970b462a0a21b8c31b7c89.woff?aefddce5b0970b462a0a21b8c31b7c89") format("woff"),
+		url("./fonts/icons-aefddce5b0970b462a0a21b8c31b7c89.ttf?aefddce5b0970b462a0a21b8c31b7c89") format("truetype");
+  font-weight:normal;
+  font-style:normal;
+}
+
+
+$icons: (
+
+  close: "f101",
+  facebook: "f102",
+  instagram: "f103",
+  pinterest: "f104",
+);
+
+@mixin icon($icon) {
+  font-family: "Icons";
+  $code: map-get($icons, $icon);
+  content: unquote('\'\\#{ $code }\'');
+}
+
+.i {
+  font-family: "Icons";
+  display:inline-block;
+  line-height:1;
+  font-weight:normal;
+  font-style:normal;
+  speak:none;
+  text-decoration:inherit;
+  text-transform:none;
+  text-rendering:auto;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+
+.i-close:before {
+  @include icon(close);
+}
+
+.i-facebook:before {
+  @include icon(facebook);
+}
+
+.i-instagram:before {
+  @include icon(instagram);
+}
+
+.i-pinterest:before {
+  @include icon(pinterest);
+}

@@ -1,0 +1,14 @@
+<div class="container-fluid">
+	<h1>{{ page.title }}</h1>
+	<div class="rte">
+	  {{ page.content }}
+	</div>
+</div>
+
+<div class="flexible-content">
+{% for block in page.metafields.scb.content %}
+  {% assign data = block.value %}
+	{% assign section_name = 'scb-' | append: block.type %}
+	{% include section_name with data %}
+{% endfor %}
+</div>

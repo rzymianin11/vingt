@@ -1,0 +1,78 @@
+/* ---------------------------------------------------------------------------- */
+/* --- FOOTER
+/* ----------------------------------------------------------------------------- */
+
+#footer {
+	position: relative;
+  padding: $body-spacing;
+  display: flex;
+  align-items: center;
+  border-top: 1px solid $color-light;
+  @include text-uppercase;
+
+  @include media('<=xl') {
+    flex-direction: column;
+    justify-content: center;
+    padding: $body-spacing-sm;
+  }
+
+  @include media('<=sm') {
+    font-size: 9px;
+  }
+
+  .module {
+    &:not(:last-child) {
+      @include media('>xl') {
+        margin-right: 1rem;
+      }
+    }
+  }
+
+  .module-copyright {
+    @include media('<=xl') {
+      order: 5;
+    }
+  }
+
+  .module-navigation {
+    @include media('<=xl') {
+      order: 2;
+      margin-bottom: 1rem;
+    }
+  }
+
+  .module-social {
+    @include media('<=xl') {
+      order: 4;
+      margin-bottom: 1rem;
+    }
+  }
+
+  .module-newsletter {
+    @include media('>xl') {
+      margin-left: auto;
+    }
+    @include media('<=xl') {
+      order: 1;
+      margin-bottom: 1rem;
+    }
+    @include media('<=sm') {
+      width: 100%;
+    }
+
+    form {
+      display: flex;
+      align-items: center;
+
+      .form-control {
+        width: 250px;
+        margin-right: 1rem;
+        @include media('<=sm') {
+          margin-right: 0.5rem;
+          width: auto;
+          flex: 1 1 auto;
+        }
+      }
+    }
+  }
+}

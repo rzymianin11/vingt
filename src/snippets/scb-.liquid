@@ -1,0 +1,48 @@
+{% if data.two_images_m_between != blank %} 
+	{% assign n_margin = data.two_images_m_between | divided_by: 2.0 %}
+{% endif %}
+
+<div class="{% if data.two_images_container != blank and data.two_images_container == 'no' %}{% else %}container-fluid{% endif %} py-5">
+	<div class="row no-gutters my-5" style="
+			{% if data.bg-color2 != blank %} 
+				background-color: {{ data.bg-color2 }};
+			{% endif %}
+		">
+		<div class="col-md-6 {% if data.inner_padding2 != blank %}lesspaddingmobile{% endif %}" style="
+			{% if data.inner_padding2 != blank %} 
+				padding: {{ data.inner_padding2 }};
+			{% endif %}
+			{% if n_margin != blank %}
+				padding-right: {{ n_margin }}px;
+			{% endif %}				
+			">
+			<div class="w-100" style="position: relative;">
+				<img style="display: block;" src="{% include 'img_url' with url: data.image-left-1[0].url, params: '960x' %}" class="w-100" />
+				{% if data.image-left-1[0].title != '' %} 
+					<div class="label" style="position: absolute; bottom: calc(100% + 2.5em); right: 0; color: {{ data.two-images-color }}; font-size: 15px; letter-spacing: 0.16px; font-weight: 100;">
+						{{ data.image-left-1[0].title }}
+					</div>
+				{% endif %}
+			</div>
+		</div>
+		<div class="col-md-6 {% if data.inner_padding3 != blank %}lesspaddingmobile{% endif %}" style="
+			{% if data.inner_padding3 != blank %} 
+				padding: {{ data.inner_padding3 }};
+			{% endif %}
+			{% if n_margin != blank %}
+				padding-left: {{ n_margin }}px;
+			{% endif %}		
+			">
+			<div class="w-100" style="position: relative;">
+				<img style="display: block;" src="{% include 'img_url' with url: data.image-right-1[0].url, params: '960x' %}" class="w-100" />
+				{% if data.image-right-1[0].title != '' %} 
+					<div class="label" style="position: absolute; top: calc(100% + 2.5em); right: 0; color: {{ data.two-images-color }}; font-size: 15px; letter-spacing: 0.16px; font-weight: 100;">
+						{{ data.image-right-1[0].title }}
+					</div>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+</div>
+
+{% assign n_margin = 0; %}

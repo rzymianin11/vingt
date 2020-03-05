@@ -1,0 +1,105 @@
+.master-title {
+	position: absolute;
+	right: 100px;
+	top: 100px;
+	z-index: 9;
+	font-size: rem(60px) !important;
+	font-weight: 100;
+	span {
+		font-family: $font-secondary;
+	}
+}
+.flexible-content {
+	position: relative;
+	.scb-dialogues_image_text {
+		&.index1 {
+			padding-top: 0 !important;
+			margin-top: 0 !important;
+			& > .row {
+				padding-top: 0 !important;
+				margin-top: 0 !important;				
+			}
+			.txt {
+				padding-top: 250px;
+			}
+		}
+	}
+}
+.scb-dialogues_image_text {
+	h2 {
+		font-family: $font-primary;
+		font-size: rem(22px);
+		position: relative;
+		margin-top: rem(50px);
+		&:after {
+			background-color: white;
+			content: "";
+			height: 1px;
+			width: rem(60px);
+			position: absolute;
+			left: 0;
+			bottom: -1em;
+		}
+	}
+	.txt {
+		&.padding-left {
+			padding-left: 100px;
+		}
+		&.padding-right {
+			padding-right: 100px;
+		}
+		h2 {
+			&:first-child {
+				//margin-top: 0;
+			}
+		}
+	}
+}
+
+.scb-big_image {
+	.img {
+		@include media('>md') {
+			padding-left: 200px;	
+		}
+	}	
+	@include media('>md') {
+		h2 {
+			position: absolute;
+			left: 130px;
+			font-size: rem(40px);
+			margin-bottom: 0;
+			bottom: 0;
+			transform-origin: left bottom;
+ 			transform: rotate(-90deg);
+		}	
+	}
+}
+
+.quote_dial {
+	h2 {
+		text-transform: none;
+		font-size: rem(45px);
+		margin: 0;
+	}
+	.row {
+		@include media('>md') {
+			padding-right: 400px;	
+		}
+	}
+}
+
+.scb2 {
+	h2 {
+		position: absolute;
+		right: 150px;
+		top: -250px;
+		font-size: rem(45px);
+		font-family: $font-primary;
+		font-weight: 400;
+		transform-origin: right top;
+ 		transform: rotate(-90deg);
+		span {
+			font-family: $font-secondary;
+		}
+	}
+}

@@ -1,0 +1,126 @@
+<!doctype html>
+<html class="no-js supports-no-cookies" lang="{{ shop.locale }}">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="{{ settings.color_accent }}">
+  <link rel="canonical" href="{{ canonical_url }}">
+
+  {%- if settings.favicon != blank -%}
+    <link rel="shortcut icon" href="{{ settings.favicon | img_url: '32x32' }}" type="image/png">
+  {%- endif -%}
+  
+ 
+ {{ 'option_selection.js' | shopify_asset_url | script_tag }}
+  <script src="//cdn.shopify.com/s/files/1/0538/1121/t/2/assets/rivets-cart.min.js?v=8402627764638899690" type="text/javascript"></script> 
+
+  {%- capture seo_title -%}
+    {{ page_title }}
+    {%- if current_tags -%}
+      {%- assign meta_tags = current_tags | join: ', ' -%} &ndash; {{ 'general.meta.tags' | t: tags: meta_tags -}}
+    {%- endif -%}
+    {%- if current_page != 1 -%}
+      &ndash; {{ 'general.meta.page' | t: page: current_page }}
+    {%- endif -%}
+    {%- assign escaped_page_title = page_title | escape -%}
+    {%- unless escaped_page_title contains shop.name -%}
+      &ndash; {{ shop.name }}
+    {%- endunless -%}
+  {%- endcapture -%}
+  <title>{{ seo_title | strip }}</title>
+
+  {%- if page_description -%}
+    <meta name="description" content="{{ page_description | escape }}">
+  {%- endif -%}
+
+  {% include 'social-meta-tags' %}
+  {% include 'style-tags', layout: 'theme' %}
+  {% include 'css-variables' %}
+
+  <script>
+    document.documentElement.className = document.documentElement.className.replace('no-js', '');
+
+    window.theme = {
+      strings: {
+        addToCart: {{ 'products.product.add_to_cart' | t | json }},
+        soldOut: {{ 'products.product.sold_out' | t | json }},
+        unavailable: {{ 'products.product.unavailable' | t | json }}
+      },
+      moneyFormat: {{ shop.money_format | json }}
+    };
+    
+    window.cartJson = {{ cart | json }};
+  </script>
+
+  {% include 'script-tags', layout: 'theme' %}
+
+  {{ content_for_header }}
+</head>
+
+<body id="{{ page_title | handle }}" class="template-{{ template.name | handle }}">
+
+  <a class="d-none in-page-link visually-hidden skip-link" href="#MainContent">{{ 'general.accessibility.skip_to_content' | t }}</a>
+
+  {% section 'header' %}
+
+<!-- Content -->
+<div id="content">
+  <main role="main" id="MainContent">
+    {{ content_for_layout }}
+  </main>
+</div>
+
+  <div id="CartDrawer" class="drawer drawer--right drawer--has-fixed-footer d-flex flex-column" data-cart-view>
+	  
+	  
+	  
+      <div class="drawer__header d-flex justify-content-between align-items-center">
+	      <div>
+		      {{ 'layout.cart.title' | t }}
+	      </div>
+	      <div>
+		      <span data-cart-render="item_count"></span> ITEM
+	      </div>
+        <div class="">
+          <button type="button" class="drawer__close-button js-drawer-close">
+            <span class="icon icon-x" aria-hidden="true"></span>
+          </button>
+        </div>
+      </div>
+      <div class="drawer__inner">
+        <div id="CartContainer flex flex-column">
+
+		        <div class="item d-flex mb-5 align-items-start" itemid="{{ item.id }}" rv-each-item="cart.items">
+			        <a href="#" itemid="{{ item.id }}" class="btn btn--small btn--secondary cart__remove" rv-data-cart-remove="index | plus 1">{{ 'cart.general.remove' | t }}</a>
+	                <a href="{{ item.url | within: collections.all }}">
+	                  <img class="cart__image" src="" rv-src="item.image | productImageSize '180x'" alt="{{ item.title | escape }}">
+	                </a>
+	                <div class="meta">
+		                <h3 rv-text="item.title"></h3>
+		                <ul>
+			                <li>Quantity: <span rv-text="item.quantity"></span></li>
+		                </ul>
+		                <ul rv-hide="item.propertyArray | empty">
+		                    <li rv-each-property="item.propertyArray > properties" rv-text="property.value"></li>
+		                </ul>
+	                </div>
+	                <div class="price" data-key="{{item.key}}" rv-text="item.price | money">
+	                </div>
+		        </div>
+
+        </div>
+      </div>
+      <div class="drawer__footer mt-auto">
+	      <div class="d-flex flex-column">
+		      <div class="mb-3 d-flex">Subtotal <span class="d-inline-block ml-auto totalpricecart" rv-html="cart.total_price | money Currency.currentCurrency">{{ cart.total_price | money }}</span></div>
+		      <a href="/cart" class="mb-3 btn btn-outline-primary">View bag</a>
+		      <a href="/checkout" class="mb-3 btn btn-black">Checkout</a>
+	      </div>
+      </div>
+  </div>
+
+  {% section 'footer' %}
+
+</body>
+</html>

@@ -1,0 +1,175 @@
+<section data-section-id="{{ section.id }}" data-section-type="product">
+
+  {%- assign current_variant = product.selected_or_first_available_variant -%}
+  {%- assign featured_image = current_variant.featured_image | default: product.featured_image -%}
+
+  <div class="row">
+	  <div class="col-md-6 images-col">
+		  {% for image in product.images %}
+		      {% if featured_image != image -%}
+				    {% include 'responsive-image' with
+				      image: image,
+				      max_width: 1400,
+				      max_height: 99999,
+				      image_attributes: "data-product-featured-image",
+				      wrapper_class: wrapper_class,
+				      wrapper_attributes: "data-product-image-wrapper",
+				    %}
+			    {%- endif -%}
+		    
+		  {% endfor %}
+		
+		{% comment %} 
+		  {% if product.images.size > 1 %}
+		    <ul>
+		      {% for image in product.images %}
+		        <li>
+		          <a href="{{ image.src | img_url: '480x480' }}" data-thumbnail-id="{{ image.id }}" data-product-single-thumbnail{% if featured_image == image %} aria-current="true"{% endif %}>
+		            <img class="product-single__thumbnail-image" src="{{ image.src | img_url: '160x160' }}" alt="{{ image.alt | escape }}">
+		          </a>
+		        </li>
+		      {% endfor %}
+		    </ul>
+		  {% endif %}
+		  {% endcomment %}
+	  </div>
+	  <div class="col-md-6 data-col">
+	  	<div class="stickyarea">
+	  	<div class="sticky-this">
+		  <h1>{{ product.title }}</h1>
+		  <p class="d-none">{{ product.vendor }}</p>
+		    <div data-price-wrapper>
+		      <span data-product-price>
+		        {{ current_variant.price | money }}
+		      </span>
+		
+		      {% if product.compare_at_price_max > product.price %}
+		        <span class="visually-hidden" data-compare-text>{{ 'products.product.regular_price' | t }}</span>
+		        <s data-compare-price>
+		          {% if current_variant.compare_at_price > current_variant.price %}
+		            {{ current_variant.compare_at_price | money }}
+		          {% endif %}
+		        </s>
+		      {% endif %}
+		    </div>
+		
+		<div class="product-meta">
+			
+		  <div class="rte">
+		    {{ product.description }}
+		  </div>
+		  
+		  <a class="btn size-chart-open-popup" href="#size-chart">SIZE GUIDE</a>
+		
+		  {% form 'product', product, data-product-form: '', data-cart-submit: '', data-product-handle: product.handle, data-enable-history-state: 'true' %}
+		    {% unless product.has_only_default_variant %}
+		      {% for option in product.options_with_values %}
+		        <div class="js">
+		
+		          {% if forloop.index0 > 0 %}
+		
+		            {% for value in option.values %}
+		              <input type="radio" id="Option{{ option.position }}-{{ value }}" name="options[{{ option.name }}]" value="{{ value }}"{% if option.selected_value == value %} checked{% endif %}>
+		              <label for="Option{{ option.position }}-{{ value }}">{{ value }}</label>
+		            {% endfor %}
+		
+		          {% else %}
+		
+		            <label for="Option{{ option.position }}">
+		              {{ option.name }}
+		            </label>
+
+					<div class="options">					
+					{% for value in option.values %}
+						<button changein="Option{{ option.position }}" pid="{{ option.id }}" value="{{ value | escape }}" class="btn btn-outline-light {% if option.selected_value == value %}selected{% endif %}">{{ value }}</button>
+					{% endfor %}
+					</div>
+					
+		            <select
+		              id="Option{{ option.position }}"
+		              name="options[{{ option.name | escape }}]" class="d-none">
+		              {% for value in option.values %}
+		                <option
+		                  value="{{ value | escape }}"
+		                  {% if option.selected_value == value %}selected="selected"{% endif %}>
+		                    {{ value }}
+		                </option>
+		              {% endfor %}
+		            </select>
+		
+		          {% endif %}
+		        </div>
+		      {% endfor %}
+		    {% endunless %}
+		
+		    <noscript>
+		      <select name="id">
+		        {% for variant in product.variants %}
+		          <option
+		            {% if variant == current_variant %}selected="selected"{% endif %}
+		            {% unless variant.available %}disabled="disabled"{% endunless %}
+		            value="{{ variant.id }}">
+		              {{ variant.title }}
+		          </option>
+		        {% endfor %}
+		      </select>
+		    </noscript>
+		
+			<span class="d-none">
+			    <label for="Quantity">{{ 'products.product.quantity' | t }}</label>
+			    <input type="number" id="Quantity" name="quantity" value="1" min="1">
+			</span>
+		
+		    <button
+		      type="submit"
+		      name="add"
+		       data-submit-button
+		       id="AddToCart-product-template" 
+		      {% unless current_variant.available %}disabled="disabled"{% endunless %} class="btn btn-outline-light">
+		        <span data-submit-button-text>
+		          {% if current_variant.available %}
+		            {{ 'products.product.add_to_cart' | t }}
+		          {% else %}
+		            {{ 'products.product.sold_out' | t }}
+		          {% endif %}
+		        </span>
+		    </button>
+		  {% endform %}
+		
+		  {% if section.settings.show_share_buttons %}
+		    {% include 'social-sharing', share_title: product.title, share_permalink: product.url, share_image: product %}
+		  {% endif %}
+		</div>
+	  	</div>
+	  	</div>
+	  </div>
+  </div>
+</section>
+
+<div id="size-chart" class="mfp-hide">
+{{ pages.size-guide.content }}
+</div>
+<style>
+#size-chart {
+  border: 2px #555 solid;
+  background-color: #ffffff;
+  padding: 20px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+</style>
+
+{% schema %}
+  {
+    "name": "Product pages",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_share_buttons",
+        "label": "Show social sharing buttons",
+        "default": true
+      }
+    ]
+  }
+{% endschema %}

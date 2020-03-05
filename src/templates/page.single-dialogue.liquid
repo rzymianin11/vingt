@@ -1,0 +1,8 @@
+<div class="flexible-content">
+	<h1 class="master-title">DIALOGUES <span>— {{ page.title }}</span></h1>
+{% for block in page.metafields.scb.content %}
+  {% assign data = block.value %}
+	{% assign section_name = 'scb-' | append: block.type %}
+	{% include section_name with data %}
+{% endfor %}
+</div>

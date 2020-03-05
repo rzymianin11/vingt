@@ -1,0 +1,67 @@
+	<!-- Section - Home Hero -->
+	<section class="section section-hero-home">
+
+    <!-- Section Module #1 -->
+    <div class="section-module section-module-left">
+      <div class="section-image">
+        <div class="bg-image" data-src="{{ section.settings.image-1 | img_url: '961x' }}" data-src-2x="{{ section.settings.image-1 | img_url: '961x', scale: 2 }}"></div>
+      </div>
+      <div class="section-content">
+        <h1><strong>PRE ORDER</strong></h1>
+      </div>
+    </div>
+
+    <!-- Section Content #2 -->
+    <div class="section-module section-module-right">
+      <div class="section-image">
+        <div class="bg-image" data-src="{{ section.settings.image-2 | img_url: '760x' }}" data-src-2x="{{ section.settings.image-2 | img_url: '760x', scale: 2 }}"></div>
+        <a href="#" class="link-underline bottom-right">SHOP COLLECTION</a>
+      </div>
+      <div class="section-content">
+        <h1>Series 02</h1>
+      </div>
+    </div>
+
+	</section>
+
+
+{% schema %}
+  {
+    "name": "Two images",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "image-1",
+        "label": "Image on the left"
+      },
+      {
+        "type": "text",
+        "id": "head-1",
+        "label": "Heading on the left",
+        "default": "Pre Order"
+      },
+      {
+        "type": "image_picker",
+        "id": "image-2",
+        "label": "Image on the Right"
+      },
+      {
+        "type": "text",
+        "id": "head-2",
+        "label": "Heading on the Right",
+        "default": "Series"
+      },
+	{
+	  "id": "link",
+	  "type": "url",
+	  "label": "Choose link"
+	}
+    ],
+    "presets": [
+      {
+        "name": "Two images",
+        "category": "Image"
+      }
+    ]
+  }
+{% endschema %}

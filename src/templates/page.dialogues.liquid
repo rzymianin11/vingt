@@ -1,0 +1,23 @@
+<div class="page-title">
+	<h1>{{ page.title }} <span>—</span></h1>
+	<div class="rte">
+	  {{ page.content }}
+	</div>
+</div>
+
+<div class="image_big" style="background-image: url('{% include 'img_url' with url: page.metafields.scb.dialogues_sections[0].value.dialogues_image[0].url, params: '960x' %}');">
+
+</div>
+
+<div class="container-fluid names_wrapper">
+	<div class="names_container w-100">
+		{% for block in page.metafields.scb.dialogues_sections %}
+		  {% assign data = block.value %}
+			{% assign section_name = 'scb-' | append: block.type %}
+			<div class="name">
+				<a href="/{{ data.dialogues_link[0].type }}/{{ data.dialogues_link[0].value }}">{{ data.dialogues_name }}</a>
+				<img class="d-none" src="{% include 'img_url' with url: data.dialogues_image[0].url, params: '960x' %}" />
+			</div>
+		{% endfor %}
+	</div>
+</div>

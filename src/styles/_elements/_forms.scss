@@ -1,0 +1,63 @@
+/* Forms
+----------------------------------------------------------*/
+
+// Form Group
+
+.form-group {
+    position: relative;
+    margin-bottom: 1rem;
+}
+// Form Control
+
+.form-control {
+    @include reset(everything);
+    width: 100%;
+    appearance: none;
+    border-bottom: 1px solid $color-light;
+    border-radius: 0;
+    box-shadow: none;
+    color: $color-global;
+    padding: 1rem 0;
+    font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    height: calc(3.25rem + 2px);
+    display: block;
+
+    &:focus {
+        border-color: mix(black, $color-line, 5%);
+        box-shadow: none;
+    }
+
+    &.form-control-sm {
+        padding: 0.25rem 0;
+        height: calc(1.25rem + 2px);
+        font-size: rem(11px);
+    }
+}
+
+.dark .form-control {
+    border-color: #fff;
+    color: #fff;
+
+    + label {
+        color: $color-muted-inverted;
+    }
+}
+
+/* Select */
+
+.select-container {
+    position: relative;
+    cursor: pointer;
+
+    .form-control   {
+        padding-right: 4rem;
+
+        &:focus + .select-indicator {
+            background-color: $color-primary;
+        }
+    }
+}
+
+select.form-control:not([size]):not([multiple]) {
+    height: calc(3.25rem + 2px)
+}

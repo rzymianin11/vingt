@@ -1,0 +1,61 @@
+/* Other
+----------------------------------------------------------*/
+
+/* Card */
+.card {
+  @include media('<=md') {
+    margin-bottom: 2rem;
+  }
+
+  .card-image {
+    img {
+      width: 100%;
+    }
+  }
+
+  .card-content {
+    padding: 1rem 0;
+
+    > * {
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+/* Social */
+.social-media {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  li {
+    display: inline-block;
+    &:not(:last-child) {
+      margin-right: 0.5rem;
+    }
+    a {
+      position: relative;
+      display: block;
+      text-align: center;
+      font-size: 1.05rem;
+
+      &:hover, &:focus {
+        opacity: 0.75;
+      }
+
+      i {
+        position: relative;
+      }
+    }
+  }
+}
+
+span.line {
+	&:before {
+		content: "—";
+		font-weight: 100;
+		font-family: $font-secondary;	
+	}
+}

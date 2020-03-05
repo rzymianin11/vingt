@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="Icons" width="18.211" height="18.211" viewBox="0 0 18.211 18.211">
+    <defs>
+        <style>
+            .cls-1{fill:#f1eedb;fill-rule:evenodd}
+        </style>
+    </defs>
+    <g id="Black">
+        <path id="Facebook" d="M209.727 178.211h-8.722a1 1 0 0 1-1.005-1.005v-16.2a1 1 0 0 1 1.005-1.006h16.2a1 1 0 0 1 1.005 1.005v16.2a1 1 0 0 1-1.005 1.005h-4.641v-7.052h2.367l.354-2.748h-2.722v-1.755c0-.8.221-1.338 1.362-1.338h1.455v-2.458a19.462 19.462 0 0 0-2.121-.108 3.312 3.312 0 0 0-3.535 3.633v2.027h-2.373v2.748h2.373v7.052z" class="cls-1" transform="translate(-200 -160)"/>
+    </g>
+</svg>

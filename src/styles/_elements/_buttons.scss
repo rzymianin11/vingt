@@ -1,0 +1,114 @@
+/* Buttons
+----------------------------------------------------------*/
+
+.btn {
+  @include reset(button);
+  @include text-uppercase;
+  position: relative;
+  font-size: rem(16px);
+  padding: 0.85rem 1.25rem;
+  cursor: pointer;
+  border-width: 1px;
+  border-radius: 0;
+  overflow: hidden;
+  backface-visibility: hidden;
+  @include transition-primary;
+  white-space: nowrap;
+  text-decoration: none;
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center;
+  text-transform: uppercase;
+
+  &:hover, &:focus, &:active, &:focus:active {
+    outline: none;
+    box-shadow: none;
+  }
+  
+  &-black {
+	  background-color: black;
+	  border-color: black;
+	  color: white !important;
+  }
+  &-light {
+	  color: black;
+  }
+}
+
+.btn-link {
+  @include link-underline-hover;
+  padding: 0;
+  color: inherit;
+  border: none;
+}
+
+.btn-sm {
+  font-size: rem(14px);
+  @include media('<=sm') {
+    font-size: rem(11px);
+  }
+ 
+}
+
+/* Types */
+
+@each $type, $color in $types {
+  .btn-#{$type} {
+    border-color: $color;
+    background-color: $color;
+    color: white;
+
+    &:hover, &:focus, &:active, &:focus:active {
+      &:not(:disabled), &:not(.disabled) {
+        border-color: white;
+        background-color: white;
+        color: $color;
+        box-shadow: 0 0 20px 0 rgba($color, 0.35);
+
+        .dark & {
+          box-shadow: 0 0 20px 0 rgba(black, 0.25);
+        }
+      }
+    }
+  }
+  .btn-outline-#{$type} {
+	border: 1px solid;
+    border-color: $color;
+    color: inherit;
+
+    &:before, &:after {
+      background-color: $color;
+    }
+
+    &:hover, &:focus, &:active, &:focus:active {
+      &:not(:disabled), &:not(.disabled) {
+        border-color: transparent;
+	    background-color: $color;
+	    color: black;
+      }
+    }
+    &.selected {
+        border-color: transparent;
+	    background-color: $color;
+	    color: black;
+    }
+  }
+}
+
+
+.btn {  
+  &-black {
+	  background-color: black;
+	  border-color: black;
+	  color: white !important;
+  }
+  &-light {
+  		background-color: #f1eedb;
+	  color: black;
+	  &:hover {
+		  &:not(.disabled) {
+		  	color: black;
+		  }
+	  }
+  }
+}

@@ -1,0 +1,21 @@
+<div class="container-fluid my-5">
+	<div class="row no-gutters my-5" style="
+			{% if data.end_of_page_bg != blank %} 
+				background-color: {{ data.end_of_page_bg }};
+			{% endif %}
+		">
+		<div class="col-md-6 lesspaddingmobile d-flex align-items-end justify-content-start" style="
+				padding: 125px;
+			">
+			<div class="w-100" style="">
+				{{ data.end_of_page_text_inside }}
+			</div>
+		</div>
+		<div class="col-md-6" style="
+			">
+			<div class="w-100" style="position: relative;">
+				<img style="display: block;" src="{% include 'img_url' with url: data.end_of_page_image[0].url, params: '960x' %}" class="w-100" />
+			</div>
+		</div>
+	</div>
+</div>
