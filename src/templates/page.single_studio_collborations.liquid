@@ -1,0 +1,16 @@
+<div class="container-fluid">
+	<h1 class="musings-title">STUDIO <span>— {{ page.title }}</span></h1>
+</div>
+
+<div class="flexible-content musings">
+	<div class="container {{ section_name }}">
+		<div class="row">
+			{% assign count = 0 %}
+			{% for block in page.metafields.scb.collaborations_rows %}
+			  {% assign data = block.value %}
+				{% assign section_name = 'scb-' | append: block.type %}
+				{% include section_name with data %}
+			{% endfor %}
+		</div>
+	</div>
+</div>

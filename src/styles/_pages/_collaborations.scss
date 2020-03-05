@@ -1,0 +1,56 @@
+body.single_studio_collborations {
+	@include media('<lg') {
+		#content {
+			padding-top: 150px;
+		}	
+	}
+	.musings {
+		@include media('>lg') {
+			padding-top: 200px;
+		}
+		.col-lg-6 {
+			@include media('>lg') {
+				//padding-right: 60px;
+				&.padding-top-1 {
+					padding-top: 20%;
+					.single_musings {
+						padding-top: 0;
+					}
+				}	 
+				&.padding-top-0 {
+					margin-top: -150px;
+					.single_musings {
+						padding-top: 0;
+					}
+				}
+				&.padding-right {
+					padding-right: 60px;
+				}
+				&.padding-left {
+					padding-left: 60px;
+				}
+			}
+		}
+		.single_musings {
+			padding-bottom: rem(10px);
+			border-bottom: 1px solid #707070;
+			img {
+				width: calc(100% - 100px);
+			}
+			h3 {
+				margin-top: 1em;
+				font-family: $font-primary;
+				font-weight: 100;
+				font-size: rem(21px);
+				margin-bottom: 0;
+				text-align: left !important;
+				span {
+					font-family: $font-secondary;
+				}
+			}
+		}
+	}
+	#content {
+		padding-bottom: 200px;
+	}
+}
