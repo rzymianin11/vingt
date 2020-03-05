@@ -1,4 +1,4 @@
-body#musings {
+body#musings, body.single_musing, body.single_studio_press_content {
 	@include media('<xl') {
 		#content {
 			padding-top: 200px;

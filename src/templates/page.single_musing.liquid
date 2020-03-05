@@ -1,0 +1,20 @@
+<div class="container-fluid">
+	<h1 class="musings-title">{{ page.title }} <span>— {{ page.metafields.scb.single_musing_title_2 }}</span></h1>
+	<div class="rte">
+	  {{ page.content }}
+	</div>
+</div>
+
+<div class="flexible-content">
+{% for block in page.metafields.scb.single_musing_content %}
+  {% assign data = block.value %}
+	{% assign section_name = 'scb-' | append: block.type %}
+	{% include section_name with data %}
+{% endfor %}
+</div>
+
+<div class="container mb-5">
+	<div class="row justify-content-center">
+		<a href="/pages/musings" class="btn btn-outline-light">BACK TO MUSINGS</a>
+	</div>
+</div>

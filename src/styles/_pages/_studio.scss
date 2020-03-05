@@ -1,0 +1,42 @@
+body.single_studio {
+	h2 {
+		font-size: rem(45px);
+			font-weight: 100;
+		span {
+			font-family: $font-primary;
+			font-weight: 100;
+			font-weight: 100 !important;
+		}
+	}
+	.flexible-content {
+		font-weight: 100;
+	}
+}
+
+body.single_studio_press {
+	.rowcontent {
+		min-height: calc(100vh - 300px);
+		padding-bottom: 50px;
+		h3 {
+			font-family: $font-primary;
+			font-weight: 100;
+			font-size: rem(35px);
+			&:after {
+				content: ' —';
+				font-family: $font-secondary;
+			}
+		}
+		p {
+			margin-bottom: 0.3em;
+			font-size: rem(20px);
+			letter-spacing: 1.6px;
+		}
+		a {
+			font-family: $font-secondary;
+			b, strong {
+				font-weight: 100;
+				font-family: $font-primary;
+			}
+		}
+	}
+}

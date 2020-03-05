@@ -1,0 +1,10 @@
+<div class="container">
+	<div class="row py-5 flex-lg-row-reverse">
+		<div class="col-lg-6">
+			<img style="display: block;" src="{% include 'img_url' with url: data.single_musing_img_txt_img2[0].url, params: '911x' %}" class="w-100" />
+		</div>
+		<div class="col-lg-6 d-flex {{ data.single_musing_img_txt_align_2 }}  mt-5 mt-lg-0">
+			<div>{{ data.single_musing_img_txt_txt2 }}</div>
+		</div>
+	</div>
+</div>

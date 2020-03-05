@@ -1,0 +1,14 @@
+<div class="container-fluid">
+	<h1 class="musings-title">{{ page.metafields.scb.press_content_title1 }} <span>— {{ page.metafields.scb.press_content_title2 }}</span></h1>
+</div>
+
+<div class="flexible-content">
+	<div class="row align-items-end flex-column no-gutters">
+{% for block in page.metafields.scb.press_content %}
+  {% assign data = block.value %}
+  	<div class="col-lg-6">
+	  	<img style="display: block;" src="{% include 'img_url' with url: data.press_content_image_obj[0].url, params: '911x' %}" class="w-100" />
+  	</div>
+{% endfor %}
+	</div>
+</div>

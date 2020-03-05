@@ -1,12 +1,12 @@
 <div class="container-fluid">
-	<h1 class="musings-title">{{ page.title }} <span>— MOOD</span></h1>
+	<h1 class="musings-title">STUDIO <span>— {{ page.title }}</span></h1>
 	<div class="rte">
 	  {{ page.content }}
 	</div>
 </div>
 
 <div class="flexible-content">
-{% for block in page.metafields.scb.content %}
+{% for block in page.metafields.scb.single_musing_content %}
   {% assign data = block.value %}
 	{% assign section_name = 'scb-' | append: block.type %}
 	{% include section_name with data %}

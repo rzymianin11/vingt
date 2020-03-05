@@ -2,8 +2,8 @@
 <div class="text-center {% cycle "padding-right", "padding-left", "" %} {% cycle "col-lg-6", "col-lg-6", "col-12" %} {% cycle "padding-top-0", "padding-top-1", "padding-top-0", "padding-top-1", "padding-top-0", "padding-top-0" %}">
 	<div class="single_musings index"  data-appear data-animate="allin">
 		<div data-animation="fadeInUp">
-			<a href=""><img src="{% include 'img_url' with url: data.musings_image[0].url, params: '1000x' %}" class=""/></a>
-			<h3><a href="">{{ data.musings_title }} <span>— {{ data.musings_title_2 }}</span></a></h3>
+			<a href="/{{ data.musings_link[0].type }}/{{ data.musings_link[0].value }}"><img src="{% include 'img_url' with url: data.musings_image[0].url, params: '1000x' %}" class=""/></a>
+			<h3><a href="/{{ data.musings_link[0].type }}/{{ data.musings_link[0].value }}">{{ data.musings_title }} <span>— {{ data.musings_title_2 }}</span></a></h3>
 		</div>
 	</div>
 </div>
