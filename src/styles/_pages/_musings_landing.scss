@@ -1,0 +1,70 @@
+body#musings {
+	@include media('<xl') {
+		#content {
+			padding-top: 200px;
+		}	
+	}
+	@include media('<992px') {
+		#content {
+			padding-top: 130px;
+			h1 {
+				text-align: center;
+			}
+		}	
+	}
+	@include media('>=1199px', '<=1450px') {
+		.container  {
+			width: 1000px;
+		}
+	}
+}
+
+.musings-title {
+	@include media('>xl') {
+		position: fixed;
+		left: 90px;
+		top: 150px;	
+		transform: rotate(-90deg) translateX(-100%);
+		transform-origin: left bottom;
+	}
+}
+
+.musings {
+	.col-lg-6 {
+		@include media('>xl') {
+			//padding-right: 60px;
+			&.padding-top-1 {
+				padding-top: 35%;
+				.single_musings {
+					padding-top: 0;
+				}
+			}	 
+			&.padding-top-0 {
+				.single_musings {
+					padding-top: 0;
+				}
+			}
+			&.padding-right {
+				padding-right: 60px;
+			}
+			&.padding-left {
+				padding-left: 60px;
+			}
+		}
+	}
+	.single_musings {
+		padding-bottom: rem(0px);
+		@include media('>xl') {
+			padding-bottom: rem(100px);
+		}
+		h3 {
+			margin-top: 1em;
+			font-family: $font-primary;
+			font-weight: 100;
+			font-size: rem(21px);
+			span {
+				font-family: $font-secondary;
+			}
+		}
+	}
+}
