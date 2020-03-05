@@ -66,7 +66,7 @@
 
     <!-- Module - Logo -->
     <div class="modue module-logo">
-      <a href="#">
+      <a href="/">
 	  	<img src="{{ section.settings.logo | img_url: 'large' }}" alt="">
       </a>
     </div>
@@ -103,7 +103,7 @@
 	          </li>
 	        {% endif %}
 	  	{% endfor %}
-        <li><a href="#">Search</a></li>
+        <li><a href="/search">Search</a></li>
         {% if shop.customer_accounts_enabled %}
         <li>
     	    	<a href="/account">{{ 'layout.customer.account' | t }}</a>

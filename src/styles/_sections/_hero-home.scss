@@ -48,7 +48,16 @@
 
     &.section-module-left {
       .section-image {
-        @include fill-parent;
+        @include media('>xl') {
+          @include fill-parent($layout-spacing);
+        }
+        @include media('<=xl','>md') {
+          @include fill-parent($layout-spacing-md);
+        }
+        @include media('<=md') {
+          @include fill-parent($layout-spacing-sm);
+        }
+        z-index: 2;
       }
 
       .section-content-mobile {
@@ -63,11 +72,12 @@
         right: 0;
         padding-right: 1rem;
         text-align: right;
-
+		z-index: 3;
         h1 {
           strong {
             &:after {
               position: absolute;
+              z-index: 4;
               top: 50%;
               height: 2px;
               background-color: $color-global;
@@ -90,20 +100,14 @@
 
     &.section-module-right {
       .section-image {
-        @include media('>xl') {
-          @include fill-parent($layout-spacing);
-        }
-        @include media('<=xl','>md') {
-          @include fill-parent($layout-spacing-md);
-        }
-        @include media('<=md') {
-          @include fill-parent($layout-spacing-sm);
-        }
+       @include fill-parent;
+        z-index: 1;
       }
 
       .section-content {
         left: $layout-spacing;
         padding-left: 1rem;
+        z-index: 3;
 
         @include media('<=xl') {
           left: $layout-spacing-md;

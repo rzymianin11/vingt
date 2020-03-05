@@ -1,32 +1,37 @@
 {% paginate search.results by 10 %}
 
-  <h1>
-    {% if search.performed %}
-      <span class="visually-hidden">{{ 'general.search.heading' | t: count: search.results_count }}:</span>
-        {{ 'general.search.results_with_count' | t: terms: search.terms, count: search.results_count }}
-    {% else %}
-      {{ 'general.search.title' | t }}
-    {% endif %}
-  </h1>
+<div class="container-fluid">
+  {% comment %}
+	  <h1>
+	    {% if search.performed %}
+	      <span class="visually-hidden">{{ 'general.search.heading' | t: count: search.results_count }}:</span>
+	        {{ 'general.search.results_with_count' | t: terms: search.terms, count: search.results_count }}
+	    {% else %}
+	      {{ 'general.search.title' | t }}
+	    {% endif %}
+	  </h1>
+  {% endcomment %}
 
-  <form action="/search" method="get" role="search">
-    <label for="Search" class="label-hidden">
-      {{ 'general.search.placeholder' | t }}
-    </label>
-    <input type="search"
-           name="q"
-           id="Search"
-           value="{{ search.terms | escape }}"
-           placeholder="{{ 'general.search.placeholder' | t }}">
-    <button type="submit" class="button">
-      {% include 'icon-search' %}
-      <span class="icon-fallback-text">{{ 'general.search.submit' | t }}</span>
-    </button>
+  <form action="/search" method="get" class="searchform" role="search">
+    <div class="form-row">
+	    <input type="search"
+	           name="q"
+	           id="Search"
+	           value="{{ search.terms | escape }}"
+	           placeholder="{{ 'general.search.placeholder' | t }}">
+	    <button type="submit" class="button">
+	      {% include 'icon-search' %}
+	      <span class="icon-fallback-text">{{ 'general.search.submit' | t }}</span>
+	    </button>
+    </div>
+    <p class="needhelp">NEED HELP?</p>
+    <p>For further information please contact our customer care
+team at info@vingtquatre24.com</p>
   </form>
 
   {% if search.performed %}
     {% if search.results_count == 0 %}
-      <p>{{ 'general.search.no_results_html' | t: terms: search.terms }}</p>
+      <p class="text-center">{{ 'general.search.no_results_html' | t: terms: search.terms }}</p>
     {% else %}
       <h2 class="visually-hidden">{{ 'general.search.heading' | t: count: search.results_count }}</h2>
       <ul>
@@ -76,5 +81,7 @@
       {% endif %}
     {% endif %}
   {% endif %}
+ 
+</div>
 
 {% endpaginate %}

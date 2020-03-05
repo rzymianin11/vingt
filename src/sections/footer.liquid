@@ -7,9 +7,35 @@
   <!-- Module - Navigation -->
   <nav class="module module-navigation">
     <ul class="nav nav-footer">
-      <li><a href="#">Contact</a></li>
-      <li><a href="#">Customer Care</a></li>
-      <li><a href="#">Legal</a></li>
+	    {% for link in linklists[section.settings.footer_menu].links %}  
+	    {% if link.links != blank %}
+        <li class="has-children">
+          <a href="#">{{ link.title }}</a>
+          <div class="megamenu">
+	          <div class="row">
+			  {% for childlink in link.links %}
+	          	<div class="col-md-4">
+		          	{% if childlink.links != blank %}
+		          	<h6><a href="{{ childlink.url }}">{{ childlink.title }}</a></h6>
+		          		<ul>
+			          	{% for childlink2 in childlink.links %}
+			          		<li><a href="{{ childlink2.url }}">{{ childlink2.title }}</a></li>
+			          	{% endfor %}
+		          		</ul>
+		          	{% endif %}
+	          	</div>
+			  	{% endfor %}
+	          </div>
+           </div>
+        </li>
+        {% else %}
+          <li>
+            <a href="{{ link.url }}">
+              {{ link.title }}
+            </a>
+          </li>
+        {% endif %}
+        {% endfor %}
     </ul>
   </nav>
 
@@ -39,7 +65,11 @@
   {
     "name": "Footer",
     "settings": [
-
+      {
+        "type": "link_list",
+        "id": "footer_menu",
+        "label": "Menu footer"
+      }
     ]
   }
 

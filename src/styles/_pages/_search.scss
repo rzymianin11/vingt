@@ -1,0 +1,42 @@
+body.template-search {
+	#content {
+		padding-top: 300px;
+		min-height: 90vh;
+	}
+	form.searchform {
+		width: 560px;
+		max-width: 100%;
+		margin: 0 auto;
+		display: flex;
+		flex-direction: column;
+		text-align: center;
+		input[type="search"] {
+			background-color: transparent;
+			border: none;
+			flex: 1 1 auto;
+			color: white;
+			font-size: rem(19px);
+		}
+		.form-row {
+			border-bottom: 1px solid #f1eedb;
+			display: flex;
+			margin-bottom: rem(50px);
+		}
+		button {
+			background-color: transparent;
+			border: none;
+			flex: 0 1 50px;
+			svg {
+				fill: #f1eedb;
+				* {
+					fill: #f1eedb;
+				}
+			}
+		}
+	}
+	p {
+		color: #f1eedb;
+		opacity: 0.6;
+		font-size: rem(17px);
+	}	
+}
